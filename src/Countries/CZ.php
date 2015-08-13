@@ -6,7 +6,7 @@ class CZ extends \Fono\Fono {
 
 	const PREG_FILTER = '#^00420[0-9]{9}$#';
 
-	public function sanitize() {
+	public function getSanitized() {
 		$string = $this->input;
 
 		// Remove all spaces, dots and dashes.
