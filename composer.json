@@ -1,0 +1,10 @@
+{
+	"name": "jabli/fono",
+	"description": "telephone number validator",
+	"type": "library",
+	"autoload": {
+		"psr-4": {
+			"Fono\\": "src/"
+		}
+	}
+}
