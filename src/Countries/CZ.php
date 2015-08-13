@@ -22,4 +22,15 @@ class CZ extends \Fono\Fono {
 		return new static($string);
 	}
 
+	public function getFormatted() {
+		$string = (string) $this->getSanitized();
+
+		// Is 00420 and 9 digits.
+		if (preg_match('#^00420(?<phone>[0-9]{9})$#', $string, $match)) {
+			return implode(' ', str_split($match['phone'], 3));
+		}
+
+		return $string;
+	}
+
 }

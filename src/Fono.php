@@ -52,10 +52,11 @@ abstract class Fono {
 		}
 	}
 
-	abstract function getSanitized();
-
 	public function isValid() {
 		return (bool) preg_match(static::PREG_FILTER, $this->getSanitized());
 	}
+
+	abstract function getSanitized();
+	abstract function getFormatted();
 
 }
