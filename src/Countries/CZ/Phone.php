@@ -1,8 +1,8 @@
 <?php
 
-namespace Fono\Countries;
+namespace Fono\Countries\CZ;
 
-class CZ extends \Fono\Fono {
+class Phone extends \Fono\Fono {
 
 	const PREG_FILTER = '#^00420[0-9]{9}$#';
 

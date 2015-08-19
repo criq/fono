@@ -14,49 +14,23 @@ abstract class Fono {
 		return $this->input;
 	}
 
-	static function getCountryClass($country) {
-		return "\\Fono\\Countries\\" . strtoupper($country);
-	}
-
-	static function validate($country, $input) {
-		try {
-
-			$class = static::getCountryClass($country);
-			if (class_exists($class)) {
-				return (new $class($input))->isValid();
-			}
-
-			throw new \Exception;
-
-		} catch (\Exception $e) {
-
-			return null;
-
-		}
-	}
-
-	static function sanitize($country, $input) {
-		try {
-
-			$class = static::getCountryClass($country);
-			if (class_exists($class)) {
-				return (new $class($input))->getSanitized();
-			}
-
-			throw new \Exception;
-
-		} catch (\Exception $e) {
-
-			return null;
-
-		}
-	}
-
-	public function isValid() {
+	public function validate() {
 		return (bool) preg_match(static::PREG_FILTER, $this->getSanitized());
 	}
 
-	abstract function getSanitized();
-	abstract function getFormatted();
+	public function getSanitized() {
+		$string = $this->input;
+
+		// Remove all spaces.
+		$string = preg_replace('#[\s]#', null, $string);
+
+		return new static($string);
+	}
+
+	public function getFormatted() {
+		$string = (string) $this->getSanitized();
+
+		return $string;
+	}
 
 }
