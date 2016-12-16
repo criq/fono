@@ -10,10 +10,10 @@ class Phone extends \Fono\Fono {
 		$string = $this->input;
 
 		// Remove all spaces, dots and dashes.
-		$string = preg_replace('#[\s\.\-]#', null, $string);
+		$string = preg_replace('#[\s\.\-]#u', null, $string);
 
 		// Replace + with 00.
-		$string = preg_replace('#^\+#', '00', $string);
+		$string = preg_replace('#^\+#u', '00', $string);
 
 		if (strlen($string) == 9) {
 			$string = '00420' . $string;
