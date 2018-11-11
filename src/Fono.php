@@ -22,7 +22,7 @@ abstract class Fono {
 		$string = $this->input;
 
 		// Remove all spaces.
-		$string = preg_replace('#[\s]#', null, $string);
+		$string = preg_replace('/\s/', null, $string);
 
 		return new static($string);
 	}
