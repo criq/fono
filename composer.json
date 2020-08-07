@@ -6,5 +6,8 @@
 		"psr-4": {
 			"Fono\\": "src/"
 		}
+	},
+	"require": {
+		"giggsey/libphonenumber-for-php": "@stable"
 	}
 }
