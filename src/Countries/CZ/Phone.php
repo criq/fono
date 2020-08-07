@@ -2,11 +2,12 @@
 
 namespace Fono\Countries\CZ;
 
-class Phone extends \Fono\Fono {
-
+class Phone extends \Fono\Fono
+{
 	const PREG_FILTER = '#^00420[0-9]{9}$#';
 
-	public function getSanitized() {
+	public function getSanitized()
+	{
 		$string = $this->input;
 
 		// Remove all spaces, dots and dashes.
@@ -22,8 +23,21 @@ class Phone extends \Fono\Fono {
 		return new static($string);
 	}
 
-	public function getFormatted() {
-		$string = (string) $this->getSanitized();
+	public function getPlain()
+	{
+		$string = (string)$this->getSanitized();
+
+		// Is 00420 and 9 digits.
+		if (preg_match('#^00420(?<phone>[0-9]{9})$#', $string, $match)) {
+			return $match['phone'];
+		}
+
+		return $string;
+	}
+
+	public function getFormatted()
+	{
+		$string = (string)$this->getSanitized();
 
 		// Is 00420 and 9 digits.
 		if (preg_match('#^00420(?<phone>[0-9]{9})$#', $string, $match)) {
@@ -32,5 +46,4 @@ class Phone extends \Fono\Fono {
 
 		return $string;
 	}
-
 }
