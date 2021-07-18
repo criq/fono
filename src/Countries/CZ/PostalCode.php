@@ -4,13 +4,18 @@ namespace Fono\Countries\CZ;
 
 class PostalCode extends \Fono\Fono
 {
-	const PREG_FILTER = '#^[0-9]{3}\s?[0-9]{2}$#';
+	const PREG_FILTER = '/^[0-9]{3}\s?[0-9]{2}$/';
 
-	public function getFormatted()
+	public function getPlain() : string
+	{
+		return (int)preg_replace('/\s/', '', $this->getValue());
+	}
+
+	public function getFormatted() : string
 	{
 		return implode(' ', [
-			substr($this->input, 0, 3),
-			substr($this->input, 3, 2),
+			substr($this->getValue(), 0, 3),
+			substr($this->getValue(), 3, 2),
 		]);
 	}
 }

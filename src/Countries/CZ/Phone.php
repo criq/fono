@@ -4,11 +4,11 @@ namespace Fono\Countries\CZ;
 
 class Phone extends \Fono\Fono
 {
-	const PREG_FILTER = '#^00420[0-9]{9}$#';
+	const PREG_FILTER = '/^00420[0-9]{9}$/';
 
-	public function getSanitized()
+	public function getSanitized() : string
 	{
-		$string = $this->input;
+		$string = $this->getValue();
 
 		// Remove all spaces, dots and dashes.
 		$string = preg_replace('#[\s\.\-]#u', '', $string);
@@ -23,7 +23,7 @@ class Phone extends \Fono\Fono
 		return new static($string);
 	}
 
-	public function getPlain()
+	public function getPlain() : string
 	{
 		$string = (string)$this->getSanitized();
 
@@ -35,7 +35,7 @@ class Phone extends \Fono\Fono
 		return $string;
 	}
 
-	public function getFormatted()
+	public function getFormatted() : string
 	{
 		$string = (string)$this->getSanitized();
 

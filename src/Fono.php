@@ -6,26 +6,38 @@ abstract class Fono
 {
 	const PREG_FILTER = '';
 
-	public $input;
+	protected $value;
 
-	public function __construct($input)
+	public function __construct($value)
 	{
-		$this->input = $input;
+		$this->value = $value;
 	}
 
 	public function __toString()
 	{
-		return $this->input;
+		return $this->getValue();
 	}
 
-	public function validate()
+	public function setValue(string $value) : Fono
 	{
-		return (bool) preg_match(static::PREG_FILTER, $this->getSanitized());
+		$this->value = $value;
+
+		return $this;
 	}
 
-	public function getSanitized()
+	public function getValue() : string
 	{
-		$string = $this->input;
+		return $this->value;
+	}
+
+	public function getIsValid() : bool
+	{
+		return (bool)preg_match(static::PREG_FILTER, $this->getSanitized());
+	}
+
+	public function getSanitized() : string
+	{
+		$string = $this->getValue();
 
 		// Remove all spaces.
 		$string = preg_replace('/\s/', '', $string);
@@ -33,9 +45,9 @@ abstract class Fono
 		return new static($string);
 	}
 
-	public function getFormatted()
+	public function getFormatted() : string
 	{
-		$string = (string) $this->getSanitized();
+		$string = (string)$this->getSanitized();
 
 		return $string;
 	}
