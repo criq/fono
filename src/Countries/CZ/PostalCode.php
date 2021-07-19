@@ -8,14 +8,14 @@ class PostalCode extends \Fono\Fono
 
 	public function getPlain() : string
 	{
-		return (int)preg_replace('/\s/', '', $this->getValue());
+		return (int)preg_replace('/\s/', '', $this->getSanitized());
 	}
 
 	public function getFormatted() : string
 	{
 		return implode(' ', [
-			substr($this->getValue(), 0, 3),
-			substr($this->getValue(), 3, 2),
+			substr($this->getSanitized(), 0, 3),
+			substr($this->getSanitized(), 3, 2),
 		]);
 	}
 }

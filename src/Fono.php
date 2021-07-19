@@ -2,6 +2,8 @@
 
 namespace Fono;
 
+use Katu\Types\TString;
+
 abstract class Fono
 {
 	const PREG_FILTER = '';
@@ -37,9 +39,8 @@ abstract class Fono
 
 	public function getSanitized() : string
 	{
-		$string = $this->getValue();
-
-		// Remove all spaces.
+		$string = new TString($this->getValue());
+		$string = $string->normalizeSpaces();
 		$string = preg_replace('/\s/', '', $string);
 
 		return new static($string);
