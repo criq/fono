@@ -1,5 +1,5 @@
 {
-	"name": "jabli/fono",
+	"name": "criq/fono",
 	"description": "telephone number validator",
 	"type": "library",
 	"autoload": {
