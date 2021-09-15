@@ -20,24 +20,24 @@ abstract class Fono
 		return $this->getValue();
 	}
 
-	public function setValue(string $value) : Fono
+	public function setValue(string $value): Fono
 	{
 		$this->value = $value;
 
 		return $this;
 	}
 
-	public function getValue() : string
+	public function getValue(): string
 	{
 		return $this->value;
 	}
 
-	public function getIsValid() : bool
+	public function getIsValid(): bool
 	{
 		return (bool)preg_match(static::PREG_FILTER, $this->getSanitized());
 	}
 
-	public function getSanitized() : string
+	public function getSanitized(): string
 	{
 		$string = new TString($this->getValue());
 		$string = $string->normalizeSpaces();
@@ -46,7 +46,7 @@ abstract class Fono
 		return new static($string);
 	}
 
-	public function getFormatted() : string
+	public function getFormatted(): string
 	{
 		$string = (string)$this->getSanitized();
 

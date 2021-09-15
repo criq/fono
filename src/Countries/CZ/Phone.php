@@ -6,7 +6,7 @@ class Phone extends \Fono\Fono
 {
 	const PREG_FILTER = '/^00420[0-9]{9}$/';
 
-	public function getSanitized() : string
+	public function getSanitized(): string
 	{
 		$string = $this->getValue();
 
@@ -23,7 +23,7 @@ class Phone extends \Fono\Fono
 		return new static($string);
 	}
 
-	public function getPlain() : string
+	public function getPlain(): string
 	{
 		$string = (string)$this->getSanitized();
 
@@ -35,7 +35,7 @@ class Phone extends \Fono\Fono
 		return $string;
 	}
 
-	public function getFormatted() : string
+	public function getFormatted(): string
 	{
 		$string = (string)$this->getSanitized();
 
