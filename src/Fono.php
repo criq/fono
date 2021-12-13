@@ -6,7 +6,7 @@ use Katu\Types\TString;
 
 abstract class Fono
 {
-	const PREG_FILTER = '';
+	const PREG_FILTER = "";
 
 	protected $value;
 
