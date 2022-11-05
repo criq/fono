@@ -4,7 +4,10 @@ namespace Fono\Countries\CZ;
 
 class PostalCode extends \Fono\Fono
 {
-	const PREG_FILTER = "/^[0-9]{3}\s?[0-9]{2}$/";
+	public function getRegexFilter(): string
+	{
+		return "/^[0-9]{3}\s?[0-9]{2}$/";
+	}
 
 	public function getPlain(): string
 	{

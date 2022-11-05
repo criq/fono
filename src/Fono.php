@@ -6,7 +6,7 @@ use Katu\Types\TString;
 
 abstract class Fono
 {
-	const PREG_FILTER = "";
+	abstract public function getRegexFilter(): string;
 
 	protected $value;
 
@@ -34,7 +34,7 @@ abstract class Fono
 
 	public function getIsValid(): bool
 	{
-		return (bool)preg_match(static::PREG_FILTER, $this->getSanitized());
+		return (bool)preg_match(static::getRegexFilter(), $this->getSanitized());
 	}
 
 	public function getSanitized(): string

@@ -4,5 +4,8 @@ namespace Fono\Countries\CZ;
 
 class DIC extends \Fono\Fono
 {
-	const PREG_FILTER = "/^CZ([0-9]{8})$/";
+	public function getRegexFilter(): string
+	{
+		return "/^CZ([0-9]{8})$/";
+	}
 }
