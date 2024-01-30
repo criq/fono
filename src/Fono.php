@@ -40,7 +40,7 @@ abstract class Fono
 	public function getSanitized(): string
 	{
 		$string = new TString($this->getValue());
-		$string = $string->normalizeSpaces();
+		$string = $string->getWithNormalizedSpaces();
 		$string = preg_replace('/\s/', '', $string);
 
 		return new static($string);
