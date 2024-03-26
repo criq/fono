@@ -8,6 +8,7 @@
 		}
 	},
 	"require": {
+		"criq/katu": "^4.20240130.1",
 		"giggsey/libphonenumber-for-php": "@stable"
 	}
 }

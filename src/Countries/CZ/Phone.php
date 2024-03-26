@@ -11,7 +11,7 @@ class Phone extends \Fono\Fono
 
 	public function getRegexFilter(): string
 	{
-		return "/^00{$this->getIntlPrefix()}[0-9]{9}$/";
+		return "/^(00|\+){$this->getIntlPrefix()}[0-9]{9}$/";
 	}
 
 	public function getSanitized(): string
@@ -47,9 +47,12 @@ class Phone extends \Fono\Fono
 	{
 		$string = (string)$this->getSanitized();
 
-		// Is 00420 and 9 digits.
+		// Is 0042x and 9 digits.
 		if (preg_match("/^00{$this->getIntlPrefix()}(?<phone>[0-9]{9})$/", $string, $match)) {
-			return implode(" ", str_split($match["phone"], 3));
+			return implode(" ", [
+				"+{$this->getIntlPrefix()}",
+				...str_split($match["phone"], 3),
+			]);
 		}
 
 		return $string;
