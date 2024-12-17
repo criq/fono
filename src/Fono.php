@@ -41,7 +41,7 @@ abstract class Fono
 	{
 		$string = new TString($this->getValue());
 		$string = $string->getWithNormalizedSpaces();
-		$string = preg_replace('/\s/', '', $string);
+		$string = preg_replace("/\s/", "", $string);
 
 		return new static($string);
 	}
