@@ -1,6 +1,7 @@
 {
 	"name": "criq/fono",
 	"description": "telephone number validator",
+	"version": "4.20260116.1",
 	"type": "library",
 	"autoload": {
 		"psr-4": {
